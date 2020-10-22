@@ -1,0 +1,58 @@
+version: '2'
+
+services: 
+    microservice-a:
+        container_name: microservice-a
+        restart: always
+        build:
+            context: ../../builds/lb4-cli
+        command: 'yarn start'
+        ports: 
+            - 3000:3000
+        volumes: 
+            - ../../source/microservice-a:/app
+
+
+
+    microservice-b:
+        container_name: microservice-b
+        restart: always
+        build:
+            context: ../../builds/lb4-cli
+        command: 'yarn start'
+        ports: 
+            - 3001:3000
+        volumes: 
+            - ../../source/microservice-b:/app
+        
+
+    mongo_service:
+        restart: always
+        image: mongo:latest
+        container_name: mongo_container
+        environment:
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
+        volumes:
+            - ../../data/mongo:/data/db  
+            
+    redis:
+        restart: always
+        image: redis:latest
+        container_name: redis_service
+        volumes:
+            - ../../data/redis:/data
+
+    minio:
+        image: minio/minio
+        restart: always
+        command: server /data
+        environment:
+            MINIO_ACCESS_KEY: AKIAIOSFOXNN7
+            MINIO_SECRET_KEY: wJalxXUtnFEMI/K7MDENG/bPaRfiCY
+        ports:
+            -   9000:9000
+        expose:
+            -   '9000'
+        volumes:
+            - ../../data/minio:/data       

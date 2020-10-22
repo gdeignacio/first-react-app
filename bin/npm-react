@@ -1,0 +1,16 @@
+#!/bin/bash
+
+####################
+###   Binaries   ###
+####################
+DOCKER=$(which docker)
+####################
+
+PROJECT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+export USER_ID=${UID}
+export GROUP_ID=${UID}
+
+
+${DOCKER} build ${PROJECT_PATH}/builds/react/. -t react
+${DOCKER} run --user="$UID" -it -v ${PROJECT_PATH}/source:/app \react bash 
