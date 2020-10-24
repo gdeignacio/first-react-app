@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-    aplicacion1:
-        container_name: aplicacion1
+    holamundo:
+        container_name: holamundo
         stdin_open: true
         build:
             context: ../../builds/react
@@ -11,20 +11,6 @@ services:
         ports:
             - 3000:3000
         volumes:
-            - ../../source/miaplicacion_uno:/app
+            - ../../source/holamundo:/app
         environment:
             - CHOKIDAR_USEPOLLING=true        
-
-    aplicacion2:
-        container_name: aplicacion2
-        stdin_open: true
-        build:
-            context: ../../builds/react
-        command: npm start --host 0.0.0.0
-        restart: always
-        ports:
-            - 3001:3000
-        volumes:
-            - ../../source/miaplicacion_dos:/app
-        environment:
-            - CHOKIDAR_USEPOLLING=true   
