@@ -1,5 +1,5 @@
 // Un componente que dispone de elementos hijo
-import React from 'react'
+import React from 'react';
 
 export default function MisChildren(props) {
     return (
@@ -10,8 +10,7 @@ export default function MisChildren(props) {
             <h2>
                 Nombre: {props.nombre}
             </h2>
-            {/*Children del componente que serán renderizados aquí*/}
-            {/*No usar la palabra reservada children para los props*/}
+            {/* Children del componente que serán renderizados aquí */}
             {props.children}
         </div>
     )

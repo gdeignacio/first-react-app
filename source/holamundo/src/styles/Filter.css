@@ -1,0 +1,15 @@
+.filtros{
+    display: inline;
+}
+
+.filtro{
+    background-color: tomato;
+    color: wheat;
+    font-weight: bolder;
+    border: 1px solid orangered;
+}
+
+.active{
+    color: green;
+    font-weight: bolder;
+}

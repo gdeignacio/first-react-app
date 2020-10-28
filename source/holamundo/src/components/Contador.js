@@ -4,23 +4,25 @@ class Contador extends Component {
 
     constructor(props){
         super(props);
-        // Estado privado del componente
+        // Estado Privado del Componente
         this.state = {
+            // Se genera una fecha como estado inicial del componente
             fecha: new Date(),
             nombre: 'Martín',
             apellido: 'San José de Vicente',
             edad: 29
-        }
+        };
     }
 
     componentDidMount(){
-        setInterval(()=> {
-            this.tick(); //cada segundo ejecutamos tick para actualizar el estado del componente
+        setInterval(() => {
+            // cada segundo ejecutamos tick para actualizar el estado del componente
+            this.tick(); 
         }, 1000)
     }
 
     componentDidUpdate(){
-        console.log('CONTADOR-COMPONENTE ACTUALIZADO');
+        console.log('CONTADOR - COMPONENTE ACTUALIZADO');
     }
 
     render() {
@@ -28,20 +30,20 @@ class Contador extends Component {
             <div>
                 <h2>
                     Hora Actual:
-                    { this.state.fecha.toLocaleTimeString() }
+                    {this.state.fecha.toLocaleTimeString()}
                 </h2>
                 <h2>Datos del Usuario</h2>
-                <h3>Nombre: { this.state.nombre}  { this.state.apellido }</h3>
-                <h4>EDAD: { this.state.edad }</h4>
+                <h3>Nombre: {this.state.nombre} {this.state.apellido}</h3>
+                <h4>EDAD: {this.state.edad}</h4>
             </div>
         )
     }
 
     tick(){
         this.setState((prevState) => {
-            let edad  = prevState.edad +1;
+            let edad = prevState.edad + 1;
             return {
-                ...prevState, // nombre, apellido (para no perdelos en el nuevo estado)
+                ...prevState, // nombre, apellido (para no perderlos en el nuevo estado)
                 edad, // actualizo la edad con un nuevo valor
                 fecha: new Date() // actualizamos con una nueva fecha
             }

@@ -1,40 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 /**
-*  
-* ? Vamos a crear un par de estilos, en vez de crearlas en hojas de estilos CSS
-* ? Los crearemos como una constantes de este archivo
+ * ? Vamos a crear un par de estilos. En vez de crearlas en hojas de estilos CSS
+ * ? Los crearemos como una constantes de este archivo
 */
 
 const loggedStyle = {
-    color: 'blue'
+    color: 'green'
 }
 
-
 const unloggedStyle = {
-    color: 'red',
+    color: 'tomato',
     fontWeight: 'bolder' // font-weight: bolder
 }
 
 export default function Bienvenida(props) {
 
     /**
-     * useState --> Hook que permite definir una propiedad de estado privato
-     * además del estado que se va a tener
+     * useState -> Hook que permite definir una propiedad de estado privado
+     * además del método que se va a usar para modificarlo
+     * además del valor inicial que va tener
      * 
-     * [variable de estado. método para modificarla] = useState(valor por defecto);
-     * 
+     * const [variable de estado, método para modoficarla] = useState(valor por defecto);
      */
-
+    
     const [logged, setLogged] = useState(false); // queremos que el valor logged sea falso al principio
-
+    
     return (
-        <div style={logged ? loggedStyle: unloggedStyle}>
-            <p> Hola, { props.nombreUsuario } </p>
+        <div style={ logged ? loggedStyle : unloggedStyle }>
+            <p>Hola, {props.nombreUsuario} </p>
             <button
                 onClick={
-                () =>  {
-                        console.log('Botón pulsado');
+                    () => {
+                        console.log('Botón Pulsado');
                         setLogged(!logged);
                     }
                 }
